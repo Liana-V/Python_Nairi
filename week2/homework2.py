@@ -1,7 +1,31 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[2]:
+
+
+#1+
+def bisect_position(lst,x):
+  
+    left = 0
+    right = len(lst)
+
+    while left != right:
+        mid = left + (right-left) // 2
+        if lst[mid] == x:
+            left = right = mid
+        elif lst[mid] < x:
+            left = mid + 1
+        else:
+            right = mid
+
+    return (lst[:left] + [x] + lst[left:]).index(x)
+
+
+bisect_position([1,2,3,6],3)
+
+
+# In[ ]:
 
 
 #1+
