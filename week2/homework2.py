@@ -4,6 +4,30 @@
 # In[3]:
 
 
+#1+
+def bisect_position(lst,x):
+  
+    left = 0
+    right = len(lst)
+
+    while left != right:
+        mid = left + (right-left) // 2
+        if lst[mid] == x:
+            left = right = mid
+        elif lst[mid] < x:
+            left = mid + 1
+        else:
+            right = mid
+
+    return (lst[:left] + [x] + lst[left:]).index(x)
+
+
+bisect_position([],3)
+
+
+# In[ ]:
+
+
 #2+
 def all_sums(number):
     list_sums = []
@@ -17,6 +41,12 @@ def all_sums(number):
 
 
 all_sums(7)
+
+
+# In[ ]:
+
+
+
 
 
 # In[2]:
@@ -42,25 +72,35 @@ def duplicate_characters(string):
 duplicate_characters("Here we have some duplicates")
 
 
-# In[1]:
+# In[16]:
 
 
 #4+
 def compare_lists(listOne, listTwo):
+    sumOne = sum(listOne)
+    sumTwo = sum(listTwo)
+    
+    lenOne = len(listOne)
+    lenTwo = len(listTwo)
+    
     productOne = 1
     productTwo = 1
     
+    while 0 in listOne:
+        listOne.remove(0)
     for i in listOne:
         productOne *= i
         
+    while 0 in listTwo:
+         listTwo.remove(0)
     for i in listTwo:
         productTwo *= i
         
-    if sum(listOne) == sum(listTwo) and productOne == productTwo:
+    if sumOne == sumTwo and productOne == productTwo and lenOne == lenTwo:
         return True
     return False
     
-compare_lists([0,5,6], [6,0,5])
+compare_lists([0, -2, -2, 2, 2, 0, 0], [-2,0,-2,2,2])
 
 
 # In[14]:
